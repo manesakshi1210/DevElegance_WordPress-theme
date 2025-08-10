@@ -1,0 +1,1196 @@
+/* *{
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+} */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #0f172a;
+  --bg-color-3: #0f172a;
+  --font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --text-color: #1e293b;
+  --light-gray: #f8fafc;
+  --dark-gray: #334155;
+  --white: #ffffff;
+  --hover-dark: #1d4ed8;
+  --hover-light: #facc15;
+  --accent-color: #0ea5e9;
+  --muted-text: #64748b;
+}
+
+body {
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+
+
+/*
+Theme Name:DevElegance
+Author: Sakshi Mane
+Description: A custom theme using Bootstrap and main.css.
+Version: 1.0
+*/
+/* custome color */
+/* a,h4,p,
+.button,
+.site-title a {
+  color: var(--primary-color);
+}
+
+.button:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+} */
+
+/* --- Global / Body Styles (Good practice) --- */
+/* You might want to include this if not already present in your stylesheet */
+body {
+    margin: 0; /* Remove default body margin */
+    /* font-family: Arial, sans-serif; Use a common sans-serif font */
+}
+
+
+/* --- Header Styles --- */
+header {
+    /* background: rgb(0, 0, 0); Your desired black background */
+   background-color: var(--bg-color-3);
+    width: 100%;
+    height: 100px; /* Fixed height for the header */
+    display: flex; /* Make header a flex container to vertically center its direct children */
+    align-items: center; /* Vertically center the content inside the header */
+}
+
+/* --- Container for width control --- */
+.container {
+    max-width: 1200px; /* Example max width, adjust as needed */
+    margin: 0 auto;    /* Center the container horizontally */
+    width: 100%;       /* Ensure it takes full width up to max-width */
+    padding: 0 15px;   /* Add some internal horizontal padding */
+}
+
+/* --- Page Wrap for content below header --- */
+.page-wrap {
+    padding: 2rem 0; /* Vertical padding for your main content area */
+}
+
+/* --- Main Navigation (UL) Styles --- */
+header .menu-top-bar-container ul.top-bar {
+    list-style-type: none; /* Remove bullet points from list items */
+    margin: 0;             /* Remove default ul margin */
+    padding: 0;            /* Remove default ul padding */
+    display: flex;         /* Make the UL the flex container for its LI children */
+    justify-content: center; /* Center main menu items horizontally */
+    align-items: center;   /* Vertically align main menu items (if their heights vary) */
+    width: 100%;           /* Ensure the ul takes up available width */
+    height: 100%;          /* Ensure the ul takes up available height within its container */
+}
+
+/* --- Main Navigation List Item (LI) Styles --- */
+header .menu-top-bar-container ul.top-bar li {
+    position: relative; /* CRUCIAL: Makes the LI a positioning context for its sub-menus */
+}
+
+/* --- Main Navigation Link (A) Styles --- */
+header .menu-top-bar-container ul.top-bar li a {
+    padding: 1rem 1rem; /* Reasonable padding for main menu links */
+    color: rgb(22, 21, 21);         /* Make link text visible on black background */
+    text-decoration: none; /* Remove underlines from links */
+    /* display: block; is often desirable here to make the whole padding area clickable */
+    /* If you uncomment display: block; it might affect vertical alignment if you're
+       relying purely on align-items: center on the parent UL/container.
+       Test with and without it based on your exact layout needs. */
+}
+
+/* --- Adjust padding for first and last main menu links --- */
+header .menu-top-bar-container ul.top-bar li:first-child a {
+    padding-left: 0;
+}
+
+header .menu-top-bar-container ul.top-bar li:last-child a {
+    padding-right: 0;
+}
+
+/* --- Styling for ALL Nested Sub-Menus (UL.sub-menu) --- */
+/* This targets the first-level sub-menu and establishes its base properties */
+header .menu-top-bar-container ul.top-bar li .sub-menu {
+    display: none;        /* Initially hidden */
+    position: absolute;   /* Positioned relative to its parent LI */
+    top: 100%;            /* Places it directly below the parent LI */
+    left: 0;              /* Aligns with the left edge of the parent LI */
+    background-color: var(--bg-color-3); /* Default background for sub-menus */
+    list-style-type: none; /* Remove bullets */
+    margin: 0;            /* Remove default margin */
+    padding: 0;           /* Remove default padding */
+    min-width: 160px;     /* Sensible minimum width */
+    z-index: 10;          /* Ensure it appears above other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Clearer shadow */
+    /* border-radius: 0 0 4px 4px; Use if you want rounded bottom corners */
+}
+
+/* IMPORTANT: Sub-menu LI elements also need to be relatively positioned
+   if *they* contain further nested sub-menus. */
+header .menu-top-bar-container ul.top-bar li .sub-menu li {
+    position: relative; /* Makes sub-menu LIs a positioning context for their own sub-menus */
+}
+
+/* --- Second-Level (and deeper) Sub-Menu Styling --- */
+/* This rule targets a .sub-menu that is a child of an LI which is ALREADY inside a .sub-menu */
+header .menu-top-bar-container ul.top-bar li .sub-menu li > .sub-menu {
+    top: 0;               /* Aligns with the top of its parent sub-menu LI */
+    left: 100%;           /* Places it directly to the right of its parent sub-menu LI */
+    margin-left: 5px;     /* Optional: Add a small gap between sub-menus */
+    border-radius: 4px;   /* Consistent rounded corners for nested sub-menus */
+    background-color: var(--bg-color-3); /* Darker background for nested sub-menus for distinction */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow */
+}
+
+/* --- Styles for ALL Sub-Menu Links (A tags within any .sub-menu) --- */
+header .menu-top-bar-container ul.top-bar .sub-menu li a {
+    color: white;        /* Default text color for sub-menu links */
+    padding: 0.8rem 1rem; /* Consistent padding for sub-menu links */
+    text-decoration: none; /* Remove underline */
+    display: block;      /* Make the whole link area clickable */
+    white-space: nowrap; /* Prevent text wrapping */
+    border-bottom: 1px solid #444; /* Separator between sub-menu items */
+}
+
+/* --- Remove bottom border from the last item in ANY sub-menu --- */
+header .menu-top-bar-container ul.top-bar .sub-menu li:last-child a {
+    border-bottom: none;
+}
+
+/* --- Hover Effects to Show Sub-Menus --- */
+/* Shows the first-level sub-menu when its parent main menu LI is hovered */
+header .menu-top-bar-container ul.top-bar li:hover > .sub-menu {
+    display: block;
+}
+
+/* Shows second-level (and deeper) sub-menus when their parent LI (within another sub-menu) is hovered */
+header .menu-top-bar-container ul.top-bar .sub-menu li:hover > .sub-menu {
+    display: block;
+}
+
+/* --- Hover Effects for Individual Links (main and sub-menus) --- */
+/* Hover effect for main menu links */
+header .menu-top-bar-container ul.top-bar li a:hover {
+    background-color: #333; /* Example: Darker background on hover */
+    border-radius: 4px; /* Optional: Rounded corners on hover */
+    color: var(--white);
+}
+
+/* Hover effect for individual sub-menu links */
+header .menu-top-bar-container ul.top-bar .sub-menu li a:hover {
+    background-color: #555; /* Darker background on hover for any sub-menu links */
+    color: white; /* Ensure text remains white on hover */
+}
+
+
+
+/* Container for the sidebar widgets */
+.col-lg-3 {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+/* General widget box style */
+.widget {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Widget Title */
+.widget-title,
+.wp-block-heading {
+    font-size: 1.25rem;
+    color: #343a40;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Menu widget */
+.menu {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.menu-item {
+    margin-bottom: 10px;
+}
+
+.menu-item a {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.menu-item a:hover,
+.menu-item.current-menu-item a {
+    color: #0056b3;
+    font-weight: 600;
+}
+
+/* Text widget */
+.widget_text p,
+.widget_block p {
+    font-size: 0.95rem;
+    color: #495057;
+}
+
+/* Recent posts block */
+.wp-block-latest-posts__list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.wp-block-latest-posts__post-title {
+    display: block;
+    padding: 6px 0;
+    border-bottom: 1px dashed #ccc;
+    color: #343a40;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.wp-block-latest-posts__post-title:hover {
+    color: #007bff;
+}
+
+
+.top-bar {
+  text-align: center;
+  padding: 10px 0;
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  position: relative;
+  z-index: 2;
+}
+
+
+
+.footer-menu ul.footer-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-bar li a {
+  color: black;
+  text-decoration: none;
+}
+
+.footer-bar li a:hover {
+  color: #0d6efd;
+}
+
+.footer-social-links a {
+  color: black;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-widgets .footer-widget {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #444;
+  padding-top: 10px;
+  color: #cfa8a8;
+}
+
+.top-bar {
+  z-index: 1000;
+  position: relative;
+}
+
+
+/* === Header Image Styling === */
+.custom-header-image {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.custom-header-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* === Header Wrapper === */
+.site-header {
+  background-color:var(--primary-color);
+  color:var(--bg-color-3);
+  padding: 10px 0;
+}
+
+/* === Header Inner Container === */
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* === Site Branding Section (Logo + Title) === */
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* === Logo Styling === */
+.site-logo img {
+  max-height: 60px;
+  height: auto;
+  width: auto;
+}
+
+/* === Site Title & Tagline === */
+.site-branding {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 10px 0;
+  flex-wrap: wrap;
+}
+
+/* Site Title to the left */
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+.site-title-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: bold;
+  color:var(--bg-color-3);
+}
+
+.site-title a {
+
+  color:var(--bg-color-3);
+  text-decoration: none;
+}
+
+.site-description {
+  margin: 0;
+  font-size: 1em;
+  color:var(--bg-color-3);
+}
+
+.site-logo img {
+  max-height: 60px;
+}
+/* Site Branding Container */
+.site-branding {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+
+/* Logo aligned to the left */
+.site-logo {
+  order: 1;
+}
+
+.site-logo img {
+  max-height: 60px;
+  height: auto;
+  width: auto;
+}
+
+/* Title & Description aligned to the right of the logo */
+.site-title-description {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Title styling */
+.site-title {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--bg-color-3);
+}
+
+.site-title a {
+  color: var(--bg-color-3);
+  text-decoration: none;
+}
+
+/* Tagline styling */
+.site-description {
+  margin: 0;
+  font-size: 1em;
+  color: var(--bg-color-3);
+}
+
+
+.main-navigation .menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.main-navigation .menu li a {
+  color:var(--bg-color-3);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.main-navigation .menu li a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+/* === HEADER TOP BAR === */
+.header-top {
+  color:var(--primary-color);
+  padding: 10px 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.header_top_inner {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact-info .header_icon {
+  margin-right: 20px;
+  align-items: center;
+}
+
+.header_icon .icon_img {
+  margin-right: 6px;
+  font-size: 16px;
+  color: var(--primary-color);
+}
+
+.header_icon .text,
+.header_icon a.text {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.header_icon a.text:hover {
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+.appoint-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.apointmnet_btn {
+  color: var(--primary-color);
+  background-color: var(--bg-color-3);
+  padding: 8px 20px;
+  border: none;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.apointmnet_btn:hover {
+  background-color:var(--primary-color);
+   color: var(--bg-color-3);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .contact-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .appoint-btn {
+    margin-top: 10px;
+    justify-content: flex-start;
+  }
+}
+
+
+.site-footer {
+  background-color:var(--primary-color);
+  color:var(--bg-color-3);
+  padding: 40px 0 20px;
+}
+
+.footer-col {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color:var(--bg-color-3);
+  background-color: var(--primary-color);
+}
+
+.footer-logo {
+  max-width: 130px;
+  margin-bottom: 10px;
+  color:var(--bg-color-3);
+}
+
+.footer-tagline,
+.newsletter-tagline {
+ color:var(--bg-color-3);
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.footer-contact h5,
+.footer-social-newsletter h5 {
+ color:var(--bg-color-3);
+  margin-bottom: 10px;
+}
+.footer-contact a
+{
+  font-size: 18px;
+  color:var(--bg-color-3);
+  margin-right: 12px;
+  transition: color 0.3s ease;
+ 
+}
+.footer-contact a:hover {
+ color:var(--hover-light);
+}
+
+.social-icons a {
+  font-size: 18px;
+  color:var(--bg-color-3);
+  margin-right: 12px;
+  transition: color 0.3s ease;
+ 
+}
+.social-icons a:hover {
+ color:var(--hover-light);
+}
+
+.newsletter-form {
+  display: flex;
+  margin-top: 10px;
+  max-width: 300px;
+}
+
+.newsletter-form input[type="email"] {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 20px 0 0 20px;
+  background: #e2e8f0;
+  color:var(--bg-color-3);
+}
+
+.newsletter-form button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  background-color:var(--bg-color-3);
+  color:var(--primary-color);
+  cursor: pointer;
+}
+
+.newsletter-form button:hover {
+  background-color:var(--hover-light);
+}
+
+.footer-bottom {
+  border-top: 1px solid #334155;
+  padding-top: 15px;
+  font-size: 13px;
+  color:var(--bg-color-3);
+  justify-content: space-between;
+}
+
+/* === Footer Menu Styling === */
+.menu-footer {
+  padding: 10px 0;
+ color:var(--bg-color-3);
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-menu li {
+  display: inline-block;
+}
+
+.footer-menu li a {
+  text-decoration: none;
+  color:var(--bg-color-3);
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-menu li a:hover {
+  color: #facc15; /* yellow highlight on hover */
+}
+
+.footer-links h5 {
+  margin-bottom: 10px;
+  color:var(--bg-color-3);
+}
+
+.footer-vertical-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-vertical-menu li {
+  margin-bottom: 8px;
+}
+
+.footer-vertical-menu li a {
+  color:var(--bg-color-3);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-vertical-menu li a:hover {
+  color: #facc15;
+}
+
+.header-tagline-wrapper {
+   /* background-color:var(--bg-color-3); */
+  text-align: center;
+  padding: 12px 20px;
+  line-height: 1.4;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.header-tagline {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color:var(--bg-color-3);
+}
+
+.header-subtagline {
+  font-size: 14px;
+color:var(--primary-color);
+  margin: 4px 0 0;
+  font-style: italic;
+}
+
+/* Pre-Footer Section */
+.pre-footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+  background-color: var(--primary-color);
+  padding: 40px 20px;
+  color:var(--bg-color-3);
+}
+
+/* Each Block */
+.pre-footer-block {
+  padding: 30px 20px;
+  /* background-color: #1e293b; */
+  background-color: var(--light-gray);
+  color:var(--bg-color-3);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.pre-footer-block h4 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  border-bottom: 2px solid  #0f172a;
+  text-align: center;
+  /* display: inline-block; */
+  padding-bottom: 6px;
+}
+
+.pre-footer-block a {
+  color: #facc15;
+  text-decoration: underline;
+}
+
+/* Project Gallery */
+.projects-gallery-scroll {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 10px;
+}
+
+.projects-gallery {
+  display: flex;
+  gap: 20px;
+}
+
+.project-item {
+  flex: 0 0 auto;
+  width: 180px;
+  text-align: center;
+}
+
+.project-item img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+.projects-gallery-scroll {
+  scroll-snap-type: x mandatory;
+}
+.project-item {
+  scroll-snap-align: start;
+}
+
+
+/* About Section */
+.about-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.about-desc {
+  font-size: 15px;
+  color: black;
+  margin-bottom: 15px;
+}
+.about-contact {
+  font-size: 14px;
+ color: black;
+  margin-bottom: 5px;
+}
+
+/* Team Carousel */
+.team-carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.team-carousel-track {
+  display: flex;
+  animation: scrollTeam 10s linear infinite;
+}
+.team-card {
+  flex: 0 0 100%;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.4s ease-in-out;
+}
+.team-card img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #facc15;
+  margin-bottom: 12px;
+}
+.team-name {
+  font-size: 18px;
+  font-weight: bold;
+  color:var(--bg-color-3);
+}
+.team-role {
+  font-size: 14px;
+   color:var(--bg-color-3);
+}
+@keyframes scrollTeam {
+  0%, 20% { transform: translateX(0); }
+  25%, 45% { transform: translateX(-100%); }
+  50%, 70% { transform: translateX(-200%); }
+  75%, 95% { transform: translateX(-300%); }
+  100% { transform: translateX(0); }
+}
+
+/* Clients Carousel */
+.clients-carousel {
+  overflow: hidden;
+  position: relative;
+}
+.clients-track {
+  display: flex;
+  animation: scrollClients 15s linear infinite;
+}
+.client-item {
+  flex: 0 0 25%; /* Show 4 at a time */
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.client-item img {
+  width: 80px;
+  height: auto;
+  margin-bottom: 5px;
+  /* filter: grayscale(100%); */
+  transition: filter 0.3s, transform 0.3s;
+}
+.client-item img:hover {
+  filter: none;
+  transform: scale(1.05);
+}
+.client-item p {
+  font-size: 14px;
+  color:var(--bg-color-3);
+  margin: 0;
+}
+@keyframes scrollClients {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .team-card img,
+  .client-item img {
+    width: 80px;
+    height: 80px;
+  }
+  .team-name {
+    font-size: 16px;
+  }
+  .team-role {
+    font-size: 13px;
+  }
+  .project-item {
+    width: 90px;
+  }
+}
+
+.works-heading {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.works-subheading {
+  text-align: center;
+  font-size: 16px;
+  color:var(--bg-color-3);
+  margin-bottom: 30px;
+}
+
+.works-cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.work-card {
+    background-color: var(--primary-color);
+  color:var(--bg-color-3);
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  text-align: center;
+  flex: 0 0 calc(33.333% - 20px);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+
+}
+/* .work-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(99, 172, 201, 0.15);
+  background-color: #f9f9ff;
+} */
+ .work-card:hover {
+  box-shadow: 0 10px 24px rgba(91, 149, 204, 0.2); /* Only shadow increases */
+}
+.work-icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.work-card h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.work-card p {
+  font-size: 14px;
+  color:var(--dark-gray);
+  margin-bottom: 12px;
+
+}
+
+.work-link {
+   color:var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.work-link:hover {
+  text-decoration: underline;
+}
+
+.review-carousel {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.review-carousel-track {
+  display: flex;
+  animation: scrollReviews 30s linear infinite;
+}
+
+.review-card {
+  flex: 0 0 100%;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.review-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.review-message {
+  font-size: 14px;
+  color:var(--dark-gray);
+  margin-bottom: 10px;
+}
+
+.review-stars {
+  font-size: 18px;
+   color:var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.review-client {
+  font-weight: bold;
+  font-size: 16px;
+  color:var(--bg-color-3);
+}
+
+@keyframes scrollReviews {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(0); }
+  25% { transform: translateX(-100%); }
+  45% { transform: translateX(-100%); }
+  50% { transform: translateX(-200%); }
+  70% { transform: translateX(-200%); }
+  75% { transform: translateX(-300%); }
+  95% { transform: translateX(-300%); }
+  100% { transform: translateX(0); }
+}
+
+/* ========== Carousel Enhancements ========== */
+.carousel-item img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  background: rgba(15, 23, 42, 0.5); /* Semi-transparent dark */
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  max-width: 80%;
+  margin: auto;
+  color: var(--white);
+}
+
+.carousel-caption h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.carousel-caption h2 span {
+  color: var(--accent-color);
+}
+
+.carousel-caption p {
+  font-size: 1.125rem;
+  color: var(--light-gray);
+}
+
+/* Mobile Responsive Captions */
+@media (max-width: 768px) {
+  .carousel-caption {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+
+  .carousel-caption h2 {
+    font-size: 1.4rem;
+  }
+
+  .carousel-caption p {
+    font-size: 1rem;
+  }
+}
+
+/* ========== Carousel Control Buttons ========== */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+.site-footer h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  color: var(--hover-light);
+}
+
+
+
+.about-us-section { 
+  padding: 50px; 
+  background: var(--white) 
+}
+
+.about-us-section h1, .about-us-section h2 { 
+  color: var(--primary-color); 
+}
+.about-us-section P{
+  color: var(--bg-color-3);
+}
+.our-leadership {
+  background-color: var(--primary-color);
+  color:var(--bg-color-3);
+  /* padding: 60px 20px; */
+  text-align:right;
+  left: 0;
+}
+.leadership-card {
+  background: var(--primary-color);
+
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+.our-leadership h2 {
+  font-weight: 700;
+}
+@media (max-width: 767px) {
+  .leadership-card {
+    text-align: center;
+  }
+}
+
+
+.leadership-cover {
+  position: relative;
+  overflow: hidden;
+}
+
+.leadership-cover:hover{
+   transform: scale(1.05);
+}
+.cover-text-top {
+  top: 20px; /* Push down slightly from top edge */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  padding: 10px 25px;
+  border-radius: 5px;
+}
+
+.cover-text-top h3 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #fff;
+}
+
+.awards-gallery {
+  background-color:var(--white);
+    color: var(--hover-dark);
+}
+.award-item {
+  transition: transform 0.3s;
+}
+.award-item:hover {
+  transform: scale(1.05);
+}
+
+
+.social-works {
+  background-color:var(--white);
+  color: var(--primary-color);
+  top: 0;
+}
+.social-item img {
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+.social-item img:hover {
+  transform: scale(1.03);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+.modal-content {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+.modal-header .btn-close {
+  filter: invert(1); /* white X on dark bg */
+  font-size: 1.5rem;
+}
+.modal-body img {
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
